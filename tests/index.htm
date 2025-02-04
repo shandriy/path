@@ -4,7 +4,16 @@
   <script src="../src/index.js"></script>
   <script src="../src/matrix.js"></script>
   <script>
+    var m1 = new Frame.Matrix(2, 2, [
+      [1, 1],
+      [0, 1]
+    ]);
+    var m2 = new Frame.Matrix(2, 2, [
+      [1, 0],
+      [2, 2]
+    ]);
 
+    console.log(Frame.Matrix.add(m1, m2));
   </script>
 </head>
 <body>
