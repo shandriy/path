@@ -9,6 +9,9 @@
       matrix: An existing Matrix  object to clone or values for it.
   */
   function Matrix(x, y, matrix) {
+    this.x = x || 0;
+    this.y = y || 0;
+
     var m = matrix || [];
 
     /*
@@ -48,24 +51,9 @@
   Matrix.flatten = function(matrix) {
     var out = [];
 
-    var i = 0;
-
-    /*
-      Since the Matrix object is not an array, it is impossible to reliable loop
-        over all indices.
-      Instead, loop until an undefined value is hit.
-    */
-    while (true) {
-      if (matrix[i] != undefined) {
-        var len = matrix[i].length;
-
-        for (var j = 0; j < len; j++) {
-          out.push(matrix[i][j])
-        }
-
-        i++;
-      } else {
-        break;
+    for (var i = 0; i < matrix.y; i++) {
+      for (var j = 0; j < matrix.x; j++) {
+        out.push(matrix[i][j]);
       }
     }
 
