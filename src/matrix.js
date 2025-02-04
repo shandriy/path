@@ -58,7 +58,7 @@
     }
 
     return out;
-  }
+  };
 
   /*
     Matrix: add function.
@@ -79,7 +79,28 @@
     }
 
     return new Matrix(matrix1.x, matrix1.y, out);
-  }
+  };
+
+  /*
+    Matrix: subtract function.
+
+    Arguments:
+      matrix1: An existing Matrix object,
+      matrix2: An existing Matrix object of the same dimensions as matrix1.
+
+    Returns: New Matrix object, as a result of subtracting matrix2 from matrix1.
+  */
+  Matrix.subtract = function(matrix1, matrix2) {
+    var out = [];
+
+    for (var i = 0; i < matrix1.y; i++) {
+      for (var j = 0; j < matrix1.x; j++) {
+        out.push(matrix1[i][j] - matrix2[i][j]);
+      }
+    }
+
+    return new Matrix(matrix1.x, matrix1.y, out);
+  };
 
   frame.Matrix = Matrix;
 })(Frame);
