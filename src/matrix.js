@@ -41,6 +41,24 @@
   };
 
   /*
+    Matrix: identity function.
+
+    Arguments:
+      x: Width and height of the Matrix.
+
+    Returns:  New Matrix object.
+  */
+  Matrix.identity = function(x) {
+    var out = [];
+
+    for (var i = 0; i < x * x; i++) {
+      out.push(i % (x + 1) ? 0 : 1);
+    }
+
+    return new Matrix(x, x, out);
+  }
+
+  /*
     Matrix: flatten function.
 
     Arguments:
