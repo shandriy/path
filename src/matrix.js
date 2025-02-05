@@ -102,5 +102,42 @@
     return new Matrix(matrix1.x, matrix1.y, out);
   };
 
+  /*
+    Matrix: multiply function.
+
+    Arguments:
+      matrix1: An existing Matrix object,
+      f: An existing Matrix object whose x dimension is that of matrix1 and vice versa, or a Number.
+
+    Returns: New Matrix object, as a result of multiplying matrix1 by f.
+  */
+  Matrix.multiply = function(matrix1, f) {
+    var x = matrix1.x;
+    var y = matrix1.y;
+    var out = [];
+
+    if (typeof f == "object") {
+      x = f.x;
+
+      for (var i = 0; i < matrix1.y; i++) {
+        for (var j = 0; j < f.x; j++) {
+          out.push(0);
+
+          for (var k = 0; k < matrix1.x; k++) {
+            out[out.length - 1] += matrix1[i][k] * f[k][j];
+          }
+        }
+      }
+    } else {
+      for (var i = 0; i < matrix1.y; i++) {
+        for (var j = 0; j < matrix1.x; j++) {
+          out.push(matrix1[i][j] * f);
+        }
+      }
+    }
+
+    return new Matrix(x, y, out);
+  };
+
   frame.Matrix = Matrix;
 })(Frame);
